@@ -5,8 +5,8 @@ Background:
     And User click on the login link
 
 Scenario: Login should be success
-    Given User enter the username as "TestUser@2"
-    And User enter the password as "TestUser@2"
+    Given User enter the username as "TestUser@1"
+    And User enter the password as "TestUser@1"
     When User click on the login button
     Then Login should be success
 
