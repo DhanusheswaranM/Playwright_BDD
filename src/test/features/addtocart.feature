@@ -26,3 +26,4 @@ Scenario: Add to cart should be failed
 Examples:
 | book          |
 | The alchemist |
+
