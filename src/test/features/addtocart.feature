@@ -1,10 +1,11 @@
-Feature: User Authentication tests
+Feature: Add to cart
 
 Background:
     Given User navigates to the application
-    And User click on the login link
+    
 
 Scenario: Add to the cart should be success
+    And User click on the login link
     Given User enter the username as "<username>"
     And User enter the password as "<password>"
     When User click on the login button
@@ -19,5 +20,9 @@ Examples:
 
 @fail
 Scenario: Add to cart should be failed
-    Then User search the book "The alchemist"
-    And User dosent see the book that is provided
+    Then User search the book "<book>"
+    And User dosent see the book that is provided "<book>"
+
+Examples:
+| book          |
+| The alchemist |

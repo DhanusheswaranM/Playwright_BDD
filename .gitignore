@@ -5,3 +5,10 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/assets/
+/features/
+/test-failed/
+/test-result/
+@rerun.txt
+reports
+index.html
