@@ -3,44 +3,32 @@ import { Given, When, Then} from '@cucumber/cucumber';
 import {expect} from '@playwright/test';
 
 import { pageFixture } from '../../hooks/pageFixture';
+import HeaderPage from './../../pages/headerPages';
+import AddToCartPage from './../../pages/addtocartPages';
 
 
 
 Then('User search the book {string}', async function (book) {
-    // await this.page.locator("input[type='search']").fill(book);
-    await pageFixture.page.locator("//input[@type='search']").press('Enter');
-    await pageFixture.page.locator("//input[@type='search']").fill(book);
-    // await pageFixture.page.locator("//input[@type='search']").press('Enter'); 
-    const option = await pageFixture.page.locator("mat-option[role='option'] span").first();
-    if (await option.isVisible()){
-        await option.waitFor({ state: 'visible' });
-    await option.click();
-    }
+    const headerPage = new HeaderPage(pageFixture.page!);
+    await headerPage.enterBookName(book);
+    pageFixture.logger?.info("Book name entered: " + book);
     
          });
 
 Then('User add the book to cart', async function () {
-    // await this.page.locator("(//span[@class='mdc-button__label'][normalize-space()='Add to Cart'])[1]").click();
-    const addtoCart = await pageFixture.page.locator("(//span[@class='mdc-button__label'][normalize-space()='Add to Cart'])[1]").first();
-    await addtoCart.waitFor({ state: 'visible' });
-    await addtoCart.click();
-
-    const toast = pageFixture.page.locator("simple-snack-bar");
-    await expect(toast).toBeVisible();
-    await toast.waitFor({ state: 'hidden' });
+    const addToCartPage = new AddToCartPage(pageFixture.page!);
+    await addToCartPage.clickAddToCart();
+    pageFixture.logger?.info("Book added to cart successfully");
          });
 
 Then('User can view the book carted', async function () {
-    // await this.page.locator("//div[@class='d-flex align-items-center']/button[2]").click();
-
-    // await this.page.locator("//tbody[@role='rowgroup']/tr/td[2]/a").isVisible();
-    const badgelocator = await pageFixture.page.locator("//span[@id='mat-badge-content-0']").textContent();
-    const badgelocatorNumber = parseInt(badgelocator || '0', 10);
-    await expect(badgelocatorNumber).toBeGreaterThan(0);
+    const addToCartPage = new AddToCartPage(pageFixture.page!);
+    await addToCartPage.VerifyProductAddedInCart();
+    pageFixture.logger?.info("Product added in cart is verified");
          });
 
 Then('User dosent see the book that is provided {string}', async function (book) {
-     const searchValue = await pageFixture.page.locator("//div[@class='col mb-3']/div/div[1]/app-book-card/mat-card/mat-card-content/div/a/strong").textContent();
-     expect(searchValue).not.toContain(book);
-
+    const addToCartPage = new AddToCartPage(pageFixture.page!);
+    await addToCartPage.verifyBookInCart(book);
+    pageFixture.logger?.info("Book not found in cart: "+book);
          });

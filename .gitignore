@@ -10,3 +10,4 @@ node_modules/
 /test-failed/
 /test-result/
 @rerun.txt
+/reports/
