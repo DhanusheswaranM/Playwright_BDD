@@ -5,6 +5,7 @@ import { getEnv } from "../helper/env/env";
 import { invokeBrowser } from "../helper/browsers/browserManager";
 import { options } from './../helper/Util/logger';
 import { createLogger } from "winston";
+import { Timer } from "../helper/timer";
 
 let browser : Browser;
 let context : BrowserContext;
@@ -12,6 +13,7 @@ let context : BrowserContext;
 BeforeAll(async function(){
     getEnv();
     browser = await invokeBrowser();
+    Timer.setStartTime();
 });
 
 Before (async function ({pickle}) {
