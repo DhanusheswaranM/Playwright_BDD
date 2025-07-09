@@ -7,7 +7,7 @@ const startTime = new Date(endTime.getTime() - 5 * 60000);
 
 report.generate({
   jsonDir: "test-results",
-  reportPath: "./",
+  reportPath: "reports",
   reportName: "Playwright BDD Report",
   pageTitle: "Bookcart App test report",
   metadata: {
