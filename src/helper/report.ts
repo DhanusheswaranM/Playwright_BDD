@@ -1,9 +1,11 @@
 const report = require("multiple-cucumber-html-reporter");
 
-// Capture current timestamps
+const { Timer } = require("./timer");
 
-const endTime = new Date();
-const startTime = new Date(endTime.getTime() - 5 * 60000);
+const startDate = Timer.getStartTime(); // ✅ read from file
+const endDate = new Date();
+const durationMs = endDate.getTime() - startDate.getTime();
+const duration = `${Math.floor(durationMs / 1000)} seconds`;
 
 report.generate({
   jsonDir: "test-results",
@@ -27,8 +29,9 @@ report.generate({
       { label: "Project", value: "Book Cart Project" },
       { label: "Release", value: "1.2.3" },
       { label: "Cycle", value: "Smoke-1" },
-      { label: "Execution Start Time", value: startTime.toLocaleString() },
-      { label: "Execution End Time", value: endTime.toLocaleString() }
+      { label: "Execution Start Time", value: startDate.toLocaleString() },
+      { label: "Execution End Time", value: endDate.toLocaleString() },
+      { label: "Total Duration" , value : duration}
     ],
   },
 });
