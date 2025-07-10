@@ -16,7 +16,7 @@ Scenario: Add to the cart should be success
 Examples:
 | username   | password     | book          |
 | TestUser@1 | TestUser@1   | roomies       |
-# | TestUser@2 | TestUser@2   | Rot & Ruin    |
+| TestUser@2 | TestUser@2   | Rot & Ruin    |
 
 @fail
 Scenario: Add to cart should be failed

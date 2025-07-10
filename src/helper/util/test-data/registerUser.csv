@@ -1,0 +1,4 @@
+firstName,lastName,userName,password,confirmPassword,gender
+Alice1,A,Alice1001,Pass123$,Pass123$,m
+BobMary1,B,bob2001,Pass123$,Pass123$,f
+Frank1,C,frank03001,Pass123$,Pass123$,m
