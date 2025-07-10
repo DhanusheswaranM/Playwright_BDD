@@ -15,7 +15,8 @@ export default class HeaderPage{
         cartValue: "//span[@id='mat-badge-content-0']",
         userMenu: "//button[contains(@class,'mat-focus-indicator mat-menu-trigger')]",
         myOrder: "//button[text()='My Orders' and @role='menuitem']",
-        logoutLink:  "//button[text()='Logout' and @role='menuitem')]"
+        logoutLink:  "//button[text()='Logout' and @role='menuitem')]",
+        registerLinkBtn: "//span[contains(text(),'Register')]"
     }
 
 
@@ -45,5 +46,9 @@ export default class HeaderPage{
         await this.clickOnUserMenu();
         await this.base.navigateTo(this.headerPageElements.logoutLink);
 
+    }
+
+    async clickRegisterLinkBtn(){
+        await this.base.waitAndClick(this.headerPageElements.registerLinkBtn);
     }
 }

@@ -19,6 +19,7 @@
     "@playwright/test": "^1.53.2",
     "@types/node": "^24.0.10",
     "cross-env": "^7.0.3",
+    "csv-parse": "^5.6.0",
     "cucumber-html-reporter": "^6.0.0",
     "dotenv": "^17.1.0",
     "i": "^0.3.7",
